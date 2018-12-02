@@ -23,19 +23,31 @@ class Downloader
      * @param string $url
      * @param $params
      * @return string
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function downloadTextFile($url = '', $params)
     {
-        $response = $this->client->request('GET', $url . '?' . http_build_query($params));
+//        $response = $this->client->request('GET', $url . '?' . http_build_query($params));
         $fileName = storage_path($this->downloadPath) . '/' . date('YmdHis') . '.txt';
-        if ($response->getStatusCode() == '200') {
-            $contents = $response->getBody()->getContents();
-            $data = $this->encodeConvertToUtf8($contents);
-            file_put_contents($fileName, $data);
-        } else {
-            abort('500', '图书章节下载失败');
+
+        $handle = fopen($url . '?' . http_build_query($params), 'r');
+        $fh = fopen($fileName, 'w');
+
+        while (!feof($handle)) {
+            $output = fgets($handle);
+            fwrite($fh, $this->encodeConvertToUtf8($output));
         }
+
+        fclose($handle);
+        fclose($fh);
+
+//        $fileName = storage_path($this->downloadPath) . '/' . date('YmdHis') . '.txt';
+//        if ($response->getStatusCode() == '200') {
+//            $contents = $response->getBody()->getContents();
+//            $data = $this->encodeConvertToUtf8($contents);
+//            file_put_contents($fileName, $data);
+//        } else {
+//            abort('500', '图书章节下载失败');
+//        }
         return $fileName;
     }
 

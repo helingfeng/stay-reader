@@ -75,9 +75,10 @@ class StayReader
                     $spaceNum = 0;
                 }
                 $firstLine = false;
-
             }
+            fclose($handle);
         }
+
         return $bookContents;
     }
 
