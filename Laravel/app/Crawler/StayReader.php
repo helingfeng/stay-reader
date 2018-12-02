@@ -50,6 +50,7 @@ class StayReader
             $handle = fopen($fileName, 'r');
             $spaceNum = 0;
             $firstLine = true;
+            $firstChapter = true;
 
             $chapterName = '';
             $chapterContents = '';
@@ -63,7 +64,8 @@ class StayReader
                     $spaceNum++;
                 } else {
                     if ($spaceNum == 3) {
-                        $firstLine || $this->insertBookChapter(['book_id' => $book_id, 'chapter' => $chapterName, 'contents' => $chapterContents,]);
+                        $firstChapter || $this->insertBookChapter(['book_id' => $book_id, 'chapter' => $chapterName, 'contents' => $chapterContents,]);
+                        $firstChapter = false;
                         $chapterName = $lineContent;
                     } else if ($spaceNum == 4) {
                         $chapterContents = '';
