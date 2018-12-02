@@ -2,16 +2,17 @@
 
 namespace App\Console\Commands;
 
+use App\Crawler\StayReader;
 use Illuminate\Console\Command;
 
-class RequestTasksCommand extends Command
+class StayReaderCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'monitor:execute-request-tasks';
+    protected $signature = 'reader:download {--id=0}';
 
     /**
      * The console command description.
@@ -34,10 +35,14 @@ class RequestTasksCommand extends Command
      * Execute the console command.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function handle()
     {
-        //
-
+        $book_id = $this->option('id');
+        $reader = new StayReader();
+        $this->output->writeln('start download a book...');
+        $reader->downloadDotBookById($book_id);
+        $this->output->writeln('done.');
     }
 }
