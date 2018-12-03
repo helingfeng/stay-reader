@@ -56,7 +56,10 @@ class StayReader
             $chapterContents = '';
             while (true) {
                 if (feof($handle)) {
-                    $this->insertBookChapter(['book_id' => $book_id, 'chapter' => $chapterName, 'contents' => $chapterContents]);
+                    $chapter['book_id'] = $book_id;
+                    $chapter['chapter'] = $chapterName;
+                    $chapter['contents'] = $chapterContents;
+                    $this->insertBookChapter($chapter);
                     break;
                 }
                 $lineContent = fgets($handle);
@@ -64,7 +67,10 @@ class StayReader
                     $spaceNum++;
                 } else {
                     if ($spaceNum == 3) {
-                        $firstChapter || $this->insertBookChapter(['book_id' => $book_id, 'chapter' => $chapterName, 'contents' => $chapterContents,]);
+                        $chapter['book_id'] = $book_id;
+                        $chapter['chapter'] = $chapterName;
+                        $chapter['contents'] = $chapterContents;
+                        $firstChapter || $this->insertBookChapter($chapter);
                         $firstChapter = false;
                         $chapterName = $lineContent;
                     } else if ($spaceNum == 4) {
@@ -78,7 +84,6 @@ class StayReader
             }
             fclose($handle);
         }
-
         return $bookContents;
     }
 
