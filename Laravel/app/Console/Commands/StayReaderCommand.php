@@ -40,9 +40,15 @@ class StayReaderCommand extends Command
     public function handle()
     {
         $book_id = $this->option('id');
+
         $reader = new StayReader();
-        $this->output->writeln('start download a book...');
-        $reader->downloadDotBookById($book_id);
+        if ($book_id == 'ALL') {
+            $this->output->writeln('start download all novels...');
+            $reader->downloadDotAllBooks();
+        } else {
+            $this->output->writeln('start download a novel...');
+            $reader->downloadDotBookById(intval($book_id));
+        }
         $this->output->writeln('done.');
     }
 }

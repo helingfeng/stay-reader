@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+// 获取小说列表
+Route::get('/novels', 'NovelController@novelList');
+Route::get('/novels/{book_id}', 'NovelController@novelContents');
+Route::get('/novels/{book_id}/chapters', 'NovelController@novelChapters');
+Route::get('/novels/{book_id}/chapters/{chapter_id}', 'NovelController@novelChapterContent');

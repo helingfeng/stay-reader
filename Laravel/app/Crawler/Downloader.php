@@ -28,7 +28,7 @@ class Downloader
     {
         $fileName = storage_path($this->downloadPath) . '/' . $params['id'] . '.txt';
 
-        if(!file_exists($fileName)){
+        if (!file_exists($fileName)) {
             $handle = fopen($url . '?' . http_build_query($params), 'r');
             $fh = fopen($fileName, 'w');
 
@@ -86,11 +86,36 @@ class Downloader
                 $summary['image'] = trim($url, '/') . '/' . trim($summary['image'], '/');
             }
 
+            $summary['category'] = $crawler->filterXPath('//*[@class="con_top"]')->text();
+            $arr = explode('>', $summary['category']);
+            $summary['category'] = trim($arr[1]);
+
             $summary['modified_date'] = date('Y-m-d H:i:s');
             $summary['created_date'] = date('Y-m-d H:i:s');
         } else {
             abort('500', '图书概述下载失败');
         }
         return $summary;
+    }
+
+    /**
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function downALLNovelsIDs()
+    {
+        $bookArray = [];
+        $response = $this->client->request('GET', 'https://www.booktxt.net/xiaoshuodaquan/');
+        if ($response->getStatusCode() == '200') {
+            $contents = $response->getBody()->getContents();
+            $crawler = new Crawler($contents);
+            $crawler->filterXPath('//*[@id="main"]/div/ul/li/a')->each(function (Crawler $node) use (&$bookArray) {
+                $href = $node->attr('href');
+                $arr = explode('_', $href);
+                if (isset($arr[1]) && intval($arr[1])) {
+                    array_push($bookArray, intval($arr[1]));
+                }
+            });
+        }
+        return $bookArray;
     }
 }
