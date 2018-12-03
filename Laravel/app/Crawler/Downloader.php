@@ -78,6 +78,8 @@ class Downloader
                 $summary['author'] = array_get(explode('：', $summary['author']), 1);
             }
             $summary['abstract'] = $crawler->filterXPath('//*[@id="intro"]/p')->text();
+            $summary['abstract'] = trim($summary['abstract']);
+
             $summary['image'] = $crawler->filterXPath('//*[@id="fmimg"]/img')->attr('src');
 
             if ($summary['image']) {
