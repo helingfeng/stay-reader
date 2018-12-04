@@ -1,0 +1,9 @@
+<view class="contents">
+  <h3>{{chapter.chapter}}</h3>
+  <p>{{chapter.contents}}</p>
+</view>
+
+<view class='page'>
+  <navigator class='button' url="../contents/contents?chapter_id={{chapter.id - 1}}&book_id={{chapter.book_id}}">上一章</navigator>
+  <navigator class='button' url="../contents/contents?chapter_id={{chapter.id + 1}}&book_id={{chapter.book_id}}">下一章</navigator>
+</view>
