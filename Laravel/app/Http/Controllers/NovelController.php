@@ -26,6 +26,11 @@ class NovelController
         return DB::table('sr_book_contents')->where(['book_id' => $bookId])->simplePaginate(request()->input('per_page', 15));
     }
 
+    public function novelDetail($bookId)
+    {
+        return get_object_vars(DB::table('sr_book')->where(['book_id' => $bookId])->get()->first());
+    }
+
     public function novelChapterContent($bookId, $chapterId)
     {
         return DB::table('sr_book_contents')->where(['book_id' => $bookId, 'id' => $chapterId])->get();
