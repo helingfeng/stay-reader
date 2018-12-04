@@ -41,6 +41,6 @@ class NovelController
         if ($chapter) {
             return get_object_vars($chapter);
         }
-        return response()->json(['message' => '没有找到对应的书籍'], 404);
+        return response()->json(['message' => '没有找到对应章节'], 404);
     }
 }
