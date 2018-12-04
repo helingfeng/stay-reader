@@ -28,11 +28,19 @@ class NovelController
 
     public function novelDetail($bookId)
     {
-        return get_object_vars(DB::table('sr_book')->where(['book_id' => $bookId])->get()->first());
+        $book = DB::table('sr_book')->where(['book_id' => $bookId])->get()->first();
+        if ($book) {
+            return get_object_vars($book);
+        }
+        return response()->json(['message' => '没有找到对应的书籍'], 404);
     }
 
     public function novelChapterContent($bookId, $chapterId)
     {
-        return DB::table('sr_book_contents')->where(['book_id' => $bookId, 'id' => $chapterId])->get();
+        $chapter = DB::table('sr_book_contents')->where(['book_id' => $bookId, 'id' => $chapterId])->first();
+        if ($chapter) {
+            return get_object_vars($chapter);
+        }
+        return response()->json(['message' => '没有找到对应的书籍'], 404);
     }
 }
