@@ -1,0 +1,28 @@
+<template name="templateBooksList">
+  <view class="book-list">
+    <block wx:key="id" wx:for="{{ booksList }}">
+      <view class="list-item" index="{{index}}" id="{{item.id}}">
+        <view class="content-title">
+          <text>{{item.name}}</text>
+        </view>
+        <view class='content-author'>
+          <text>作者：{{item.author}}</text>
+        </view>
+        <view class='content-summary'>
+          <text>{{item.summary}}</text>
+        </view>
+        <!-- <view class="content-date">
+          <image src="../../images/calendar.png"></image>
+          <text>{{item.date}}</text>
+          <image src="../../images/comments.png"></image>
+            <text class="">{{item.total_comments}}</text>
+            <image src="../../images/pageviews.png"></image>
+            <text class="">{{item.pageviews}}</text>
+            <image src="../../images/home-like.png"></image>
+            <text class="">{{item.like_count}}</text>        
+        </view> -->
+        <image src="{{item.image}}" class="cover"></image>
+      </view>
+    </block>
+  </view>  
+</template>

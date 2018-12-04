@@ -1,0 +1,45 @@
+
+.book-list .list-item {
+   position: relative;
+   padding: 10px 10px 0 80px;
+   background-color: #eeeeee;
+   height: 90px;
+   border-bottom: 1px #cccccc solid;
+}
+.book-list .list-item:active, .book-list .list-item:hover{
+  background-color: #d8d8d8;
+}
+.book-list .list-item .content-title{
+  font-size: 14px;
+  font-weight: bold;
+}
+.book-list .list-item .content-author{
+  font-size: 12px;
+  line-height: 25px;
+}
+
+.book-list .list-item .content-summary{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.book-list .list-item .cover{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 60px;
+  height: 80px;
+  background-color: #cccccc;
+}
+
+.slide-image{
+  width: 100%;
+}
+
+swiper {
+  height: 200px;
+}

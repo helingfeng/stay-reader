@@ -1,0 +1,36 @@
+/* components/load-more/index.wxss */
+
+.loadmore {
+    height: 35px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .loadmore text{
+    font-size: 13px;
+    color: #bfbfbf;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  
+  .icon{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+  }
+
+  .active {
+    animation: weuiLoading 0.6s steps(12, end) infinite;
+  }
+
+  @keyframes weuiLoading {
+    0% {
+      transform: rotate3d(0, 0, 1, 0deg);
+    }
+  
+    100% {
+      transform: rotate3d(0, 0, 1, 360deg);
+    }
+  }

@@ -1,0 +1,6 @@
+{
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "load-more": "/templates/load-more/load-more"
+  }
+}
