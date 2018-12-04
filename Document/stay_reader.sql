@@ -30,10 +30,10 @@ CREATE TABLE `sr_book` (
   `abstract` varchar(500) NOT NULL DEFAULT '' COMMENT '书籍简介，500字以内',
   `category` varchar(20) NOT NULL DEFAULT '' COMMENT '图书分类',
   `is_download` int(11) NOT NULL DEFAULT '0' COMMENT '是否下载',
-  `modified_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified_date` datetime NOT NULL,
+  `created_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 --  Table structure for `sr_book_contents`
@@ -44,9 +44,9 @@ CREATE TABLE `sr_book_contents` (
   `book_id` int(10) unsigned NOT NULL DEFAULT '0',
   `chapter` varchar(255) NOT NULL DEFAULT '' COMMENT '章节',
   `contents` text NOT NULL COMMENT '章节内容',
-  `modified_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified_date` datetime NOT NULL,
+  `created_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25218 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 SET FOREIGN_KEY_CHECKS = 1;
