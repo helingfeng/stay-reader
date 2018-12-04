@@ -13,7 +13,7 @@ class NovelController
     public function novelList()
     {
         $condition = request()->except('page', 'per_page');
-        return DB::table('sr_book')->where($condition)->simplePaginate(request()->input('per_page', 15));
+        return DB::table('sr_book')->where($condition)->orderBy('id','desc')->simplePaginate(request()->input('per_page', 15));
     }
 
     public function novelChapters($bookId)
