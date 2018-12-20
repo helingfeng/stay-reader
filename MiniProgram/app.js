@@ -5,8 +5,9 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    
+    this.getUserInfo();
 
+    
     
   },
   getUserInfo:function(cb){
@@ -16,10 +17,13 @@ App({
     }else{
       //调用登录接口
       wx.login({
-        success: function () {
+        success: function (r) {
+          console.log(r);
           wx.getUserInfo({
             success: function (res) {
+              console.log(res);
               that.globalData.userInfo = res.userInfo
+              console.log(that.globalData.userInfo);
               typeof cb == "function" && cb(that.globalData.userInfo)
             }
           })
