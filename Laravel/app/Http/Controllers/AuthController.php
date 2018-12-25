@@ -19,7 +19,7 @@ class AuthController
         $param['secret'] = config('app.mini_program_secret');
         $param['grant_type'] = 'authorization_code';
 
-        $response = curl_get($this->code2sessionApi . http_build_query($param));
+        $response = curl_get($this->code2sessionApi . '?' . http_build_query($param));
         return response()->json(json_decode($response['content'], true));
     }
 
