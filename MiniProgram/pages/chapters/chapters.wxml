@@ -1,0 +1,9 @@
+<view class="chapters">
+  <ul>
+    <block wx:for="{{ chaptersList }}" wx:for-index="key"  wx:for-item="value" >
+      <navigator url="../contents/contents?chapter_id={{key}}&book_id={{book_id}}">
+        <li>{{value}}</li>
+      </navigator>
+    </block>
+  </ul>
+</view>

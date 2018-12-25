@@ -228,4 +228,7 @@ return [
 
     ],
 
+    /* mini program app id and secret */
+    'mini_program_app_id' => env('MINI_PROGRAM_APP_ID', 'wxe9cb11580ed3aa95'),
+    'mini_program_secret' => env('MINI_PROGRAM_SECRET', '0269b8544405e304c2d8ff67920c9325'),
 ];

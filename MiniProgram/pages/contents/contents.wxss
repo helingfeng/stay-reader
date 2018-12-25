@@ -1,0 +1,26 @@
+.contents{
+  background-color: black;
+  color: #e7e5e5;
+  padding: 10px 15px;
+
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.contents h3{
+  display: block;
+  line-height: 35px;
+}
+.page{
+  margin: 10px 10%;
+  text-align: center;
+}
+
+.page .button{
+  border: 1px #e7e5e5 solid;
+  background-color: #cccccc;
+  padding: 5px 0;
+  width: 45%;
+  color: #14553c;
+  display: inline-block;
+}

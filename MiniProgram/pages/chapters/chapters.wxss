@@ -1,0 +1,11 @@
+.chapters{
+  padding: 20px 10px;
+}
+.chapters ul{
+  list-style: none;
+  font-size: 16px;
+  line-height: 30px;
+}
+.chapters ul li{
+  display: block;
+}

@@ -21,3 +21,5 @@ Route::get('/novels/{book_id}', 'NovelController@novelDetail');
 Route::get('/novels/{book_id}/contents', 'NovelController@novelContents');
 Route::get('/novels/{book_id}/chapters', 'NovelController@novelChapters');
 Route::get('/novels/{book_id}/chapters/{chapter_id}', 'NovelController@novelChapterContent');
+
+Route::get('/auth/code2session', 'Auth/AuthController@code2session');
