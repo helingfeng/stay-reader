@@ -6,6 +6,7 @@
 namespace App\Http\Controllers;
 
 
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\Process\Process;
 
 class PayloadController
@@ -18,6 +19,7 @@ class PayloadController
             $process = new Process($command);
             $process->run();
         }
+        Log::info("remote request key :{$secret}");
         return response()->json(['message' => 'receive push event.']);
     }
 
