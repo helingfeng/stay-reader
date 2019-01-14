@@ -23,3 +23,7 @@ Route::get('/novels/{book_id}/chapters', 'NovelController@novelChapters');
 Route::get('/novels/{book_id}/chapters/{chapter_id}', 'NovelController@novelChapterContent');
 
 Route::get('/auth/code2session', 'AuthController@code2session');
+
+
+// webhooks test
+Route::get('/payload', 'PayloadController@index');
