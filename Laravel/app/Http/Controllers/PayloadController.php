@@ -17,7 +17,7 @@ class PayloadController
         $secret = request()->input('secret', '');
         if ($secret == 'publish_blog') {
             // && /home/wwwroot/StayReader/Laravel/public/hexo-blog/node_modules/.bin/hexo g
-            $command = 'cd /home/wwwroot/StayReader/Laravel/public/hexo-blog && git pull && /home/wwwroot/StayReader/Laravel/public/hexo-blog/node_modules/.bin/hexo g';
+            $command = 'cd /home/wwwroot/StayReader/Laravel/public/hexo-blog && git pull && source /etc/profile && /home/wwwroot/StayReader/Laravel/public/hexo-blog/node_modules/.bin/hexo g';
 //            $command = 'id www';
             $process = new Process($command);
             $process->run();
